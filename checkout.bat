@@ -19,7 +19,7 @@ cd %version%
 @echo:
 @echo 1.Checkout
 @echo 2.Update
-@echo 3.Clean
+@echo 3.Delete
 @echo 4.Exit
 @echo:
 set /p option="Option : "
@@ -43,9 +43,9 @@ IF %option%==2 (
 IF %option%==3 (
 	@echo:
 	@echo Executing ...
-	@echo mvn multi-scm:clean
+	@echo mvn multi-scm:delete
 	@echo:
-	CALL mvn multi-scm:clean
+	CALL mvn multi-scm:delete
 )
 
 IF %option%==4 (
