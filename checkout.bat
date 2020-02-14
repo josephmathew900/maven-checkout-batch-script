@@ -1,29 +1,38 @@
 @echo off
 @echo ****************************** Maven Checkout ******************************
+
 @echo:
 set /p version="Version : "
 @echo:
-mkdir %version%
+
+IF exist %version% ( 
+	@echo Directory %version% already exists 
+) ELSE ( 
+	mkdir %version% && @echo Directory %version% created
+)
+
 @echo:
 cd %version%
-@echo Changing directory ...
+@echo Changing directory to %version% ...
 @echo Current Directory : %cd%
+
 @echo:
 @echo 1.Checkout
 @echo 2.Update
 @echo 3.Clean
+@echo 4.Exit
 @echo:
 set /p option="Option : "
 
-if %option%==1 (
+IF %option%==1 (
 	@echo:
 	@echo Executing ...
-    @echo mvn -U multi-scm:checkout -DworkareaDefinitionUrl="*****url*****"
+    @echo mvn -U multi-scm:checkout -DworkareaDefinitionUrl="***url***"
 	@echo:
-	CALL mvn -U multi-scm:checkout -DworkareaDefinitionUrl="*****url*****"
+	CALL mvn -U multi-scm:checkout -DworkareaDefinitionUrl="***url***"
 )
 
-if %option%==2 (
+IF %option%==2 (
 	@echo:
 	@echo Executing ...
 	@echo mvn multi-scm:update
@@ -31,12 +40,19 @@ if %option%==2 (
 	CALL mvn multi-scm:update
 )
 
-if %option%==3 (
+IF %option%==3 (
 	@echo:
 	@echo Executing ...
 	@echo mvn multi-scm:clean
 	@echo:
 	CALL mvn multi-scm:clean
+)
+
+IF %option%==4 (
+	@echo:
+	@echo Press any key to exit ...
+	pause > null
+	exit
 )
 
 @echo:
