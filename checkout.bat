@@ -27,7 +27,7 @@ set /p option="Option : "
 IF %option%==1 (
 	@echo:
 	@echo Executing ...
-    @echo mvn -U multi-scm:checkout -DworkareaDefinitionUrl="***Check-out url***"
+        @echo mvn -U multi-scm:checkout -DworkareaDefinitionUrl="***Check-out url***"
 	@echo:
 	CALL mvn -U multi-scm:checkout -DworkareaDefinitionUrl="***Check-out url***"
 )
